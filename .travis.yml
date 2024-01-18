@@ -1,16 +1,16 @@
-#sudo : required
-sudo : true  
+sudo : required
+
 language : generic
 
 services : 
   - docker
 
 before_install : 
-  - echo "START creating an image with [dockerFile]"
+  - echo "[beforeinstall] START creating an image with [dockerFile]"
   - docker build -t sunnymsgCEO/docker-react-app -f Dockerfile.dev .
 
 script : 
   - docker run -e CI=true sunnymsgCEO/docker-react-app npm run test -- --coverage
   
 after_success:
-  - echo "[docker!] TEST SUCCESS [docker!]"
+  - echo "[after_success] TEST SUCCESS [Docker!]"
