@@ -1,0 +1,16 @@
+sudo : required
+
+language : generic
+
+services : 
+  - docker
+
+before_install : 
+  - code "START CREATING an image with [dockerFile]"
+  - docker build -t sunnymsgCEO/docker-react-app -f dockerfile.dev . 
+
+script : 
+  - docker run -e CI=true sunnymsgCEO/docker-react-app npm run test
+  
+after_success:
+  - echo "[docker] TEST SUCCESS [docker]"
