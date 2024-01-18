@@ -10,7 +10,7 @@ before_install :
   - docker build -t sunnymsgceo/docker-react-app -f Dockerfile.dev .
 
 script : 
-  - docker run -e CI=true sunnymsgceo/docker-react-app npm run test -- --coverage
+  - docker run -e CI=true sunnymsgceo/docker-react-app npm run test -- --coverage --detectOpenHandles
 
 after_success:
   - echo "[after_success] TEST SUCCESS [Docker!]"
