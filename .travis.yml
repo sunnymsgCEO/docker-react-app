@@ -13,4 +13,4 @@ script :
   - docker run -e CI=true sunnymsgCEO/docker-react-app npm run test
   
 after_success:
-  - echo "[docker] TEST SUCCESS [docker]"
+  - echo "[docker!] TEST SUCCESS [docker!]"
