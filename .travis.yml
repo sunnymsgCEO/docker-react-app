@@ -1,16 +1,21 @@
-sudo : required
-
-language : generic
-
-services : 
-  - docker
-
-before_install : 
-  - echo "[beforeinstall] START creating an image with [dockerFile]"
-  - docker build -t sunnymsgceo/docker-react-app -f Dockerfile.dev .
-
-script :
-  - docker run -e CI=true sunnymsgceo/docker-react-app npm run test -- --coverage
-
-after_success :
-  - echo "[after_success] TEST SUCCESS [Docker!]"
+{
+  "language": "generic",
+  "os": [
+    "linux"
+  ],
+  "dist": "xenial",
+  "sudo": true,
+  "services": [
+    "docker"
+  ],
+  "before_install": [
+    "echo \"[beforeinstall] START creating an image with [dockerFile]\"",
+    "docker build -t sunnymsgceo/docker-react-app -f Dockerfile.dev ."
+  ],
+  "script": [
+    "docker run -e CI=true sunnymsgceo/docker-react-app npm run test -- --coverage"
+  ],
+  "after_success": [
+    "echo \"[after_success] TEST SUCCESS [Docker!]\""
+  ]
+}
