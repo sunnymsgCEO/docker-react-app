@@ -7,7 +7,7 @@ services :
 
 before_install : 
   - code "START CREATING an image with [dockerFile]"
-  - docker build -t sunnymsgCEO/docker-react-app -f dockerfile.dev . 
+  - docker build -t sunnymsgCEO/docker-react-app -f Dockerfile.dev . 
 
 script : 
   - docker run -e CI=true sunnymsgCEO/docker-react-app npm run test
